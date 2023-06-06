@@ -1,4 +1,4 @@
-import { PieChart, Pie, Cell, Tooltip } from "recharts";
+import { PieChart, Pie, Cell, Tooltip, Legend } from "recharts";
 
 const COLORS = ["#C3E855", "#C9839D", "#6AC7F5"];
 
@@ -13,6 +13,7 @@ const SentimentDist = ({ props }) => {
         })}
       </Pie>
       <Tooltip />
+      <Legend />
     </PieChart>
   );
 };

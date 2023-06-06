@@ -2,21 +2,21 @@ const SectionTitle = ({ props }) => {
   switch (props.sectionId) {
     case 0:
       return (
-        <div className="mx-auto bg-crimson flex items-center justify-center rounded-2xl h-20 w-3/4">
+        <div className="mx-auto bg-crimson flex items-center justify-center rounded-2xl h-20 w-full my-3">
           <p className="text-3xl font-bold text-white">감성 점수</p>
         </div>
       );
 
     case 1:
       return (
-        <div className="mx-auto bg-skyblue flex items-center justify-center rounded-2xl h-20 w-3/4">
+        <div className="mx-auto bg-skyblue flex items-center justify-center rounded-2xl h-20 w-full my-3">
           <p className="text-3xl font-bold text-white">토픽별 감성 분석</p>
         </div>
       );
 
     case 2:
       return (
-        <div className="mx-auto bg-bertnose flex items-center justify-center rounded-2xl h-20 w-3/4">
+        <div className="mx-auto bg-bertnose flex items-center justify-center rounded-2xl h-20 w-full my-3">
           <p className="text-3xl font-bold text-white">상관관계 분석</p>
         </div>
       );
