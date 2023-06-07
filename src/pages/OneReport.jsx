@@ -5,6 +5,7 @@ import SentimentDist from "../components/SentimentDist";
 import Sidebar from "../components/Sidebar";
 import TopicName from "../components/TopicName";
 import TopicProportion from "../components/TopicProportion";
+import WordCloud from "../components/WordCloud";
 
 //서버에서 가져올 데이터들
 const topics = [
@@ -16,7 +17,28 @@ const topics = [
       { name: "부정", value: 20 },
       { name: "중립", value: 30 },
     ],
-    wordcloud: [],
+    wordcloud: [
+      {
+        text: "ansol",
+        value: 100,
+      },
+      {
+        text: "youngjun",
+        value: 100,
+      },
+      {
+        text: "jiyun",
+        value: 100,
+      },
+      {
+        text: "hyunwook",
+        value: 100,
+      },
+      {
+        text: "joongstone",
+        value: 100,
+      },
+    ],
     positive_words: [
       { name: "quick", value: 90 },
       { name: "nice", value: 80 },
@@ -53,10 +75,7 @@ const OneReport = () => {
     <>
       <div className="flex flex-row flex-wrap justify-between">
         <Sidebar />
-        <main
-          role="main"
-          className="w-full sm:w-2/3 md:w-3/4 pt-1 px-2 mx-auto"
-        >
+        <main role="main" className="w-full sm:w-2/3 md:w-3/4 pt-1 px-2 mx-auto">
           <SectionTitle props={{ sectionId: 0 }} />
           <SectionTitle props={{ sectionId: 1 }} />
           {topics.map((topic) => {
@@ -70,18 +89,14 @@ const OneReport = () => {
                   }}
                 />
                 <div className="flex flex-row items-center justify-between my-3">
-                  <SentimentDist
-                    props={{ sentiment_dist: topic.sentiment_dist }}
-                  />
-                  <div></div>
+                  <SentimentDist props={{ sentiment_dist: topic.sentiment_dist }} />
+                  <div>
+                    <WordCloud props={{ data: topic.wordcloud }} />
+                  </div>
                 </div>
                 <div className="flex flex-row items-center justify-between my-3">
-                  <KeywordBar
-                    props={{ data: topic.positive_words, isPositive: true }}
-                  />
-                  <KeywordBar
-                    props={{ data: topic.negative_words, isPositive: false }}
-                  />
+                  <KeywordBar props={{ data: topic.positive_words, isPositive: true }} />
+                  <KeywordBar props={{ data: topic.negative_words, isPositive: false }} />
                 </div>
               </>
             );
