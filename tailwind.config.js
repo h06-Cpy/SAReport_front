@@ -12,6 +12,7 @@ export default {
       crimson: "#dc143c",
       black: "#000000",
       white: "#ffffff",
+      bgcolor: "#ebedf0",
     },
 
     extend: {},
