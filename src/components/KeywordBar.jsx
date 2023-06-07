@@ -5,7 +5,7 @@ const KeywordBar = ({ props }) => {
     <BarChart width={300} height={300} data={props.data}>
       <XAxis dataKey={"name"} />
       <YAxis />
-      <Tooltip cursor={{ fill: "white" }} />
+      <Tooltip cursor={{ fill: "none" }} />
       <Bar
         dataKey={"value"}
         fill={props.isPositive === true ? "#C3E855" : "#C9839D"}

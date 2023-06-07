@@ -14,7 +14,7 @@ const CorrLine = ({ props }) => {
       <LineChart width={800} height={400} data={props.data}>
         <CartesianGrid strokeDashoffset={"3 3"} fill="white" stroke="#AAAAAA" />
         <XAxis dataKey={"date"} />
-        <YAxis />
+        <YAxis type="number" domain={["dataMin", "dataMax"]} />
         <Legend />
         <Tooltip />
 

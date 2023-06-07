@@ -51,49 +51,50 @@ const sentiment_corr = [
 const OneReport = () => {
   return (
     <>
-      <div className="container mx-auto">
-        <div className="flex flex-row flex-wrap py-4">
-          <Sidebar />
-          <main role="main" className="w-full sm:w-2/3 md:w-3/4 pt-1 px-2">
-            <SectionTitle props={{ sectionId: 0 }} />
-            <SectionTitle props={{ sectionId: 1 }} />
-            {topics.map((topic) => {
-              return (
-                <>
-                  <TopicName
-                    props={{
-                      isPositive: true,
-                      topicname: topic.topicname,
-                      score: topic.score,
-                    }}
+      <div className="flex flex-row flex-wrap justify-between">
+        <Sidebar />
+        <main
+          role="main"
+          className="w-full sm:w-2/3 md:w-3/4 pt-1 px-2 mx-auto"
+        >
+          <SectionTitle props={{ sectionId: 0 }} />
+          <SectionTitle props={{ sectionId: 1 }} />
+          {topics.map((topic) => {
+            return (
+              <>
+                <TopicName
+                  props={{
+                    isPositive: true,
+                    topicname: topic.topicname,
+                    score: topic.score,
+                  }}
+                />
+                <div className="flex flex-row items-center justify-between my-3">
+                  <SentimentDist
+                    props={{ sentiment_dist: topic.sentiment_dist }}
                   />
-                  <div className="flex flex-row items-center justify-between my-3">
-                    <SentimentDist
-                      props={{ sentiment_dist: topic.sentiment_dist }}
-                    />
-                    <div></div>
-                  </div>
-                  <div className="flex flex-row items-center justify-between my-3">
-                    <KeywordBar
-                      props={{ data: topic.positive_words, isPositive: true }}
-                    />
-                    <KeywordBar
-                      props={{ data: topic.negative_words, isPositive: false }}
-                    />
-                  </div>
-                </>
-              );
-            })}
+                  <div></div>
+                </div>
+                <div className="flex flex-row items-center justify-between my-3">
+                  <KeywordBar
+                    props={{ data: topic.positive_words, isPositive: true }}
+                  />
+                  <KeywordBar
+                    props={{ data: topic.negative_words, isPositive: false }}
+                  />
+                </div>
+              </>
+            );
+          })}
 
-            <SectionTitle props={{ sectionId: 2 }} />
-            <div className="mx-auto flex justify-center my-3">
-              <TopicProportion props={{ data: topic_proprtions }} />
-            </div>
-            <div className="mx-auto flex justify-center my-3">
-              <CorrLine props={{ data: sentiment_corr }} />
-            </div>
-          </main>
-        </div>
+          <SectionTitle props={{ sectionId: 2 }} />
+          <div className="mx-auto flex justify-center my-3">
+            <TopicProportion props={{ data: topic_proprtions }} />
+          </div>
+          <div className="mx-auto flex justify-center my-3">
+            <CorrLine props={{ data: sentiment_corr }} />
+          </div>
+        </main>
       </div>
     </>
   );
