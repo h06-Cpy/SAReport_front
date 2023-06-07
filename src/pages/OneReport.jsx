@@ -19,7 +19,7 @@ const topics = [
     ],
     wordcloud: [
       {
-        text: "sol",
+        text: "ansol",
         value: 100,
       },
       {
