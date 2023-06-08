@@ -18,7 +18,6 @@ const TopicProportion = ({ props }) => {
         Topic Proportion over time
       </h1>
       <LineChart width={800} height={400} data={props.data}>
-        <CartesianGrid strokeDashoffset={"3 3"} fill="white" />
         <XAxis dataKey={"date"} />
         <YAxis type="number" domain={[0, 1]} />
         <Legend />

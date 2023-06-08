@@ -5,6 +5,7 @@ import SentimentDist from "../components/SentimentDist";
 import Sidebar from "../components/Sidebar";
 import TopicName from "../components/TopicName";
 import TopicProportion from "../components/TopicProportion";
+import TweetDist from "../components/TweetDist";
 import WordCloud from "../components/WordCloud";
 
 //서버에서 가져올 데이터들
@@ -70,6 +71,12 @@ const sentiment_corr = [
   { date: "5-28", sentiment: 13000, index: 20000 },
 ];
 
+const tweet_dist = [
+  { topicname: "ai", value: 30000 },
+  { topicname: "음악 플랫폼", value: 20000 },
+  { topicname: "wwdc", value: 10000 },
+];
+
 const OneReport = () => {
   return (
     <>
@@ -79,22 +86,11 @@ const OneReport = () => {
           role="main"
           className="w-full sm:w-2/3 md:w-3/4 pt-1 px-2 mx-auto"
         >
-          <SectionTitle props={{ sectionId: 0 }} />
+          {/* <SectionTitle props={{ sectionId: 0 }} /> */}
           <SectionTitle props={{ sectionId: 1 }} />
           {topics.map((topic, index) => {
             return (
-              <>
-                <div
-                  className="flex flex-row items-center justify-between my-3"
-                  key={index}
-                >
-                  <SentimentDist
-                    props={{ sentiment_dist: topic.sentiment_dist }}
-                  />
-                  <div>
-                    <WordCloud props={{ data: topic.wordcloud }} />
-                  </div>
-                </div>
+              <div key={index}>
                 <TopicName
                   props={{
                     isPositive: true,
@@ -102,19 +98,33 @@ const OneReport = () => {
                     score: topic.score,
                   }}
                 />
-                <div className="flex flex-row items-center justify-between my-3">
-                  <KeywordBar
-                    props={{ data: topic.positive_words, isPositive: true }}
-                  />
-                  <KeywordBar
-                    props={{ data: topic.negative_words, isPositive: false }}
-                  />
+                <div>
+                  <div className="flex flex-row items-center justify-around my-3">
+                    <SentimentDist
+                      props={{ sentiment_dist: topic.sentiment_dist }}
+                    />
+                    <div>
+                      <WordCloud props={{ data: topic.wordcloud }} />
+                    </div>
+                  </div>
+
+                  <div className="flex flex-row items-center justify-around my-3">
+                    <KeywordBar
+                      props={{ data: topic.positive_words, isPositive: true }}
+                    />
+                    <KeywordBar
+                      props={{ data: topic.negative_words, isPositive: false }}
+                    />
+                  </div>
                 </div>
-              </>
+              </div>
             );
           })}
 
           <SectionTitle props={{ sectionId: 2 }} />
+          <div className="mx-auto flex justify-center my-3">
+            <TweetDist props={{ data: tweet_dist }} />
+          </div>
           <div className="mx-auto flex justify-center my-3">
             <TopicProportion props={{ data: topic_proprtions }} />
           </div>

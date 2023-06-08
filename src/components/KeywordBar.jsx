@@ -2,7 +2,7 @@ import { Bar, BarChart, Legend, Tooltip, XAxis, YAxis } from "recharts";
 
 const KeywordBar = ({ props }) => {
   return (
-    <div className="bg-white rounded-md shadow-md">
+    <div className="bg-white rounded-md shadow-md px-2">
       <h1 className="mx-3 text-lg text-center my-1">
         {props.isPositive === true ? "Positive Keywords" : "Negative Keywords"}
       </h1>
