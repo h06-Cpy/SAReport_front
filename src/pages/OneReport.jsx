@@ -5,7 +5,6 @@ import SentimentDist from "../components/SentimentDist";
 import Sidebar from "../components/Sidebar";
 import TopicName from "../components/TopicName";
 import TopicProportion from "../components/TopicProportion";
-import TweetDist from "../components/TweetDist";
 import WordCloud from "../components/WordCloud";
 
 //서버에서 가져올 데이터들
@@ -14,6 +13,7 @@ const topics = [
     topicname: "토픽이름",
     score: 90,
     sentiment_dist: [
+      // 한 단위(아마 15일?) 동안 총 분포
       { name: "긍정", value: 50 },
       { name: "부정", value: 20 },
       { name: "중립", value: 30 },
@@ -71,12 +71,6 @@ const sentiment_corr = [
   { date: "5-28", sentiment: 13000, index: 20000 },
 ];
 
-const tweet_dist = [
-  { topicname: "ai", value: 30000 },
-  { topicname: "음악 플랫폼", value: 20000 },
-  { topicname: "wwdc", value: 10000 },
-];
-
 const OneReport = () => {
   return (
     <>
@@ -88,6 +82,9 @@ const OneReport = () => {
         >
           {/* <SectionTitle props={{ sectionId: 0 }} /> */}
           <SectionTitle props={{ sectionId: 1 }} />
+          {/* <p className="mx-auto text-center font-bold text-4xl">
+            토픽별 감성분석
+          </p> */}
           {topics.map((topic, index) => {
             return (
               <div key={index}>
@@ -98,6 +95,9 @@ const OneReport = () => {
                     score: topic.score,
                   }}
                 />
+                {/* <p className="mx-auto text-center font-bold text-2xl my-3">
+                  {topic.topicname}: {topic.score}
+                </p> */}
                 <div>
                   <div className="flex flex-row items-center justify-around my-3">
                     <SentimentDist
@@ -122,9 +122,7 @@ const OneReport = () => {
           })}
 
           <SectionTitle props={{ sectionId: 2 }} />
-          <div className="mx-auto flex justify-center my-3">
-            <TweetDist props={{ data: tweet_dist }} />
-          </div>
+          <div className="mx-auto flex justify-center my-3"></div>
           <div className="mx-auto flex justify-center my-3">
             <TopicProportion props={{ data: topic_proprtions }} />
           </div>
