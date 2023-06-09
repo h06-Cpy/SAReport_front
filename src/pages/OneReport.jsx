@@ -8,6 +8,15 @@ import TopicProportion from "../components/TopicProportion";
 import WordCloud from "../components/WordCloud";
 import SidebarElement from "../components/SideBarElement";
 
+useEffect(() => {
+  const datas = fetch("url").then((res) => {
+    return res.json();
+  });
+  const topics = datas.topics; //나중에 바꾸기
+  const topic_proprtions = datas[1];
+  const sentiment_corr = datas[2];
+}, []);
+
 //서버에서 가져올 데이터들
 const topics = [
   {
