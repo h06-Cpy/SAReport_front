@@ -1,12 +1,4 @@
-import {
-  CartesianGrid,
-  Legend,
-  Line,
-  LineChart,
-  Tooltip,
-  XAxis,
-  YAxis,
-} from "recharts";
+import { CartesianGrid, Legend, Line, LineChart, Tooltip, XAxis, YAxis } from "recharts";
 
 const TopicProportion = ({ props }) => {
   const numbers = [...Array(3).keys()]; // 토픽 개수 지정 필요
@@ -14,9 +6,7 @@ const TopicProportion = ({ props }) => {
 
   return (
     <div className="mx-auto bg-white rounded-md shadow-md">
-      <h1 className="mx-3 text-lg text-center my-1">
-        Topic Proportion over time
-      </h1>
+      <h1 className="mx-3 text-lg text-center my-1">Topic Proportion over time</h1>
       <LineChart width={800} height={400} data={props.data}>
         <XAxis dataKey={"date"} />
         <YAxis type="number" domain={[0, 1]} />

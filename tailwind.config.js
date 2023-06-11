@@ -5,7 +5,11 @@ export default {
     colors: {
       chunsik: "#FED78A",
       sweetpotato: "#C9839D",
-      lightgreen: "#C3E855",
+      lightgreen: "#97c902",
+      lightgreen_hover: "#78a100",
+      lightlightgreen: "#a6eb38",
+      babygreen: "#e8faaf",
+      almostgreen: "#f7ffde",
       bert: "#E2AA32",
       bertnose: "#FB962D",
       skyblue: "#6AC7F5",
@@ -13,6 +17,7 @@ export default {
       black: "#000000",
       white: "#ffffff",
       bgcolor: "#ebedf0",
+      txtcolor: "#faff9c",
     },
 
     extend: {},

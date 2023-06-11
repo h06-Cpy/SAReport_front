@@ -8,14 +8,14 @@ import TopicProportion from "../components/TopicProportion";
 import WordCloud from "../components/WordCloud";
 import SidebarElement from "../components/SideBarElement";
 
-useEffect(() => {
-  const datas = fetch("url").then((res) => {
-    return res.json();
-  });
-  const topics = datas.topics; //나중에 바꾸기
-  const topic_proprtions = datas[1];
-  const sentiment_corr = datas[2];
-}, []);
+// useEffect(() => {
+//   const datas = fetch("url").then((res) => {
+//     return res.json();
+//   });
+//   const topics = datas.topics; //나중에 바꾸기
+//   const topic_proprtions = datas[1];
+//   const sentiment_corr = datas[2];
+// }, []);
 
 //서버에서 가져올 데이터들
 const topics = [
@@ -145,6 +145,300 @@ const topics = [
       { name: "design", value: 70 },
     ],
   },
+  {
+    topicname: "토픽이름4",
+    score: 90,
+    sentiment_dist: [
+      // 한 단위(아마 15일?) 동안 총 분포
+      { name: "긍정", value: 50 },
+      { name: "부정", value: 20 },
+      { name: "중립", value: 30 },
+    ],
+    wordcloud: [
+      {
+        text: "ansol",
+        value: 100,
+      },
+      {
+        text: "youngjun",
+        value: 100,
+      },
+      {
+        text: "jiyun",
+        value: 100,
+      },
+      {
+        text: "hyunwook",
+        value: 100,
+      },
+      {
+        text: "joongstone",
+        value: 100,
+      },
+    ],
+    positive_words: [
+      { name: "quick", value: 90 },
+      { name: "nice", value: 80 },
+      { name: "good", value: 70 },
+    ],
+    negative_words: [
+      { name: "bad", value: 90 },
+      { name: "slow", value: 80 },
+      { name: "design", value: 70 },
+    ],
+  },
+  {
+    topicname: "토픽이름5",
+    score: 90,
+    sentiment_dist: [
+      // 한 단위(아마 15일?) 동안 총 분포
+      { name: "긍정", value: 50 },
+      { name: "부정", value: 20 },
+      { name: "중립", value: 30 },
+    ],
+    wordcloud: [
+      {
+        text: "ansol",
+        value: 100,
+      },
+      {
+        text: "youngjun",
+        value: 100,
+      },
+      {
+        text: "jiyun",
+        value: 100,
+      },
+      {
+        text: "hyunwook",
+        value: 100,
+      },
+      {
+        text: "joongstone",
+        value: 100,
+      },
+    ],
+    positive_words: [
+      { name: "quick", value: 90 },
+      { name: "nice", value: 80 },
+      { name: "good", value: 70 },
+    ],
+    negative_words: [
+      { name: "bad", value: 90 },
+      { name: "slow", value: 80 },
+      { name: "design", value: 70 },
+    ],
+  },
+  {
+    topicname: "토픽이름6",
+    score: 90,
+    sentiment_dist: [
+      // 한 단위(아마 15일?) 동안 총 분포
+      { name: "긍정", value: 50 },
+      { name: "부정", value: 20 },
+      { name: "중립", value: 30 },
+    ],
+    wordcloud: [
+      {
+        text: "ansol",
+        value: 100,
+      },
+      {
+        text: "youngjun",
+        value: 100,
+      },
+      {
+        text: "jiyun",
+        value: 100,
+      },
+      {
+        text: "hyunwook",
+        value: 100,
+      },
+      {
+        text: "joongstone",
+        value: 100,
+      },
+    ],
+    positive_words: [
+      { name: "quick", value: 90 },
+      { name: "nice", value: 80 },
+      { name: "good", value: 70 },
+    ],
+    negative_words: [
+      { name: "bad", value: 90 },
+      { name: "slow", value: 80 },
+      { name: "design", value: 70 },
+    ],
+  },
+  {
+    topicname: "토픽이름7",
+    score: 90,
+    sentiment_dist: [
+      // 한 단위(아마 15일?) 동안 총 분포
+      { name: "긍정", value: 50 },
+      { name: "부정", value: 20 },
+      { name: "중립", value: 30 },
+    ],
+    wordcloud: [
+      {
+        text: "ansol",
+        value: 100,
+      },
+      {
+        text: "youngjun",
+        value: 100,
+      },
+      {
+        text: "jiyun",
+        value: 100,
+      },
+      {
+        text: "hyunwook",
+        value: 100,
+      },
+      {
+        text: "joongstone",
+        value: 100,
+      },
+    ],
+    positive_words: [
+      { name: "quick", value: 90 },
+      { name: "nice", value: 80 },
+      { name: "good", value: 70 },
+    ],
+    negative_words: [
+      { name: "bad", value: 90 },
+      { name: "slow", value: 80 },
+      { name: "design", value: 70 },
+    ],
+  },
+  {
+    topicname: "토픽이름8",
+    score: 90,
+    sentiment_dist: [
+      // 한 단위(아마 15일?) 동안 총 분포
+      { name: "긍정", value: 50 },
+      { name: "부정", value: 20 },
+      { name: "중립", value: 30 },
+    ],
+    wordcloud: [
+      {
+        text: "ansol",
+        value: 100,
+      },
+      {
+        text: "youngjun",
+        value: 100,
+      },
+      {
+        text: "jiyun",
+        value: 100,
+      },
+      {
+        text: "hyunwook",
+        value: 100,
+      },
+      {
+        text: "joongstone",
+        value: 100,
+      },
+    ],
+    positive_words: [
+      { name: "quick", value: 90 },
+      { name: "nice", value: 80 },
+      { name: "good", value: 70 },
+    ],
+    negative_words: [
+      { name: "bad", value: 90 },
+      { name: "slow", value: 80 },
+      { name: "design", value: 70 },
+    ],
+  },
+  {
+    topicname: "토픽이름9",
+    score: 90,
+    sentiment_dist: [
+      // 한 단위(아마 15일?) 동안 총 분포
+      { name: "긍정", value: 50 },
+      { name: "부정", value: 20 },
+      { name: "중립", value: 30 },
+    ],
+    wordcloud: [
+      {
+        text: "ansol",
+        value: 100,
+      },
+      {
+        text: "youngjun",
+        value: 100,
+      },
+      {
+        text: "jiyun",
+        value: 100,
+      },
+      {
+        text: "hyunwook",
+        value: 100,
+      },
+      {
+        text: "joongstone",
+        value: 100,
+      },
+    ],
+    positive_words: [
+      { name: "quick", value: 90 },
+      { name: "nice", value: 80 },
+      { name: "good", value: 70 },
+    ],
+    negative_words: [
+      { name: "bad", value: 90 },
+      { name: "slow", value: 80 },
+      { name: "design", value: 70 },
+    ],
+  },
+  {
+    topicname: "토픽이름10",
+    score: 90,
+    sentiment_dist: [
+      // 한 단위(아마 15일?) 동안 총 분포
+      { name: "긍정", value: 50 },
+      { name: "부정", value: 20 },
+      { name: "중립", value: 30 },
+    ],
+    wordcloud: [
+      {
+        text: "ansol",
+        value: 100,
+      },
+      {
+        text: "youngjun",
+        value: 100,
+      },
+      {
+        text: "jiyun",
+        value: 100,
+      },
+      {
+        text: "hyunwook",
+        value: 100,
+      },
+      {
+        text: "joongstone",
+        value: 100,
+      },
+    ],
+    positive_words: [
+      { name: "quick", value: 90 },
+      { name: "nice", value: 80 },
+      { name: "good", value: 70 },
+    ],
+    negative_words: [
+      { name: "bad", value: 90 },
+      { name: "slow", value: 80 },
+      { name: "design", value: 70 },
+    ],
+  },
 ];
 
 const topic_proprtions = [
@@ -182,7 +476,7 @@ const OneReport = () => {
           </p> */}
           {topics.map((topic, index) => {
             return (
-              <div key={index}>
+              <div className="bg-almostgreen my-10" key={index}>
                 <SidebarElement props={{ topicname: topic.topicname }} />
                 <TopicName
                   props={{
@@ -215,10 +509,10 @@ const OneReport = () => {
           </>
           <SectionTitle props={{ sectionId: 2 }} />
           <div className="mx-auto flex justify-center my-3"></div>
-          <div className="mx-auto flex justify-center my-3">
+          <div className="bg-almostgreen mx-auto flex justify-center my-3">
             <TopicProportion props={{ data: topic_proprtions }} />
           </div>
-          <div className="mx-auto flex justify-center my-3">
+          <div className="bg-almostgreen mx-auto flex justify-center my-3">
             <CorrLine props={{ data: sentiment_corr }} />
           </div>
         </main>
