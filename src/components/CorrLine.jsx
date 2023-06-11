@@ -29,8 +29,15 @@ const CorrLine = ({ props }) => {
 
         <Line
           type={"linear"}
-          dataKey={"index"}
+          dataKey={"snp500"}
           stroke={"#C9839D"}
+          strokeWidth={2}
+        />
+
+        <Line
+          type={"linear"}
+          dataKey={"nasdaq100"}
+          stroke={"crimson"}
           strokeWidth={2}
         />
       </LineChart>
