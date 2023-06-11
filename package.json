@@ -12,6 +12,7 @@
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-scroll": "^1.8.9",
     "react-wordcloud": "^1.2.7",
     "recharts": "^2.6.2"
   },

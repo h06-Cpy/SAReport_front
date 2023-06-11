@@ -6,11 +6,105 @@ import Sidebar from "../components/Sidebar";
 import TopicName from "../components/TopicName";
 import TopicProportion from "../components/TopicProportion";
 import WordCloud from "../components/WordCloud";
+import SidebarElement from "../components/SideBarElement";
+
+useEffect(() => {
+  const datas = fetch("url").then((res) => {
+    return res.json();
+  });
+  const topics = datas.topics; //나중에 바꾸기
+  const topic_proprtions = datas[1];
+  const sentiment_corr = datas[2];
+}, []);
 
 //서버에서 가져올 데이터들
 const topics = [
   {
-    topicname: "토픽이름",
+    topicname: "토픽이름1",
+    score: 90,
+    sentiment_dist: [
+      // 한 단위(아마 15일?) 동안 총 분포
+      { name: "긍정", value: 50 },
+      { name: "부정", value: 20 },
+      { name: "중립", value: 30 },
+    ],
+    wordcloud: [
+      {
+        text: "ansol",
+        value: 100,
+      },
+      {
+        text: "youngjun",
+        value: 100,
+      },
+      {
+        text: "jiyun",
+        value: 100,
+      },
+      {
+        text: "hyunwook",
+        value: 100,
+      },
+      {
+        text: "joongstone",
+        value: 100,
+      },
+    ],
+    positive_words: [
+      { name: "quick", value: 90 },
+      { name: "nice", value: 80 },
+      { name: "good", value: 70 },
+    ],
+    negative_words: [
+      { name: "bad", value: 90 },
+      { name: "slow", value: 80 },
+      { name: "design", value: 70 },
+    ],
+  },
+  {
+    topicname: "토픽이름2",
+    score: 90,
+    sentiment_dist: [
+      // 한 단위(아마 15일?) 동안 총 분포
+      { name: "긍정", value: 50 },
+      { name: "부정", value: 20 },
+      { name: "중립", value: 30 },
+    ],
+    wordcloud: [
+      {
+        text: "ansol",
+        value: 100,
+      },
+      {
+        text: "youngjun",
+        value: 100,
+      },
+      {
+        text: "jiyun",
+        value: 100,
+      },
+      {
+        text: "hyunwook",
+        value: 100,
+      },
+      {
+        text: "joongstone",
+        value: 100,
+      },
+    ],
+    positive_words: [
+      { name: "quick", value: 90 },
+      { name: "nice", value: 80 },
+      { name: "good", value: 70 },
+    ],
+    negative_words: [
+      { name: "bad", value: 90 },
+      { name: "slow", value: 80 },
+      { name: "design", value: 70 },
+    ],
+  },
+  {
+    topicname: "토픽이름3",
     score: 90,
     sentiment_dist: [
       // 한 단위(아마 15일?) 동안 총 분포
@@ -75,19 +169,21 @@ const OneReport = () => {
   return (
     <>
       <div className="flex flex-row flex-wrap justify-between">
-        <Sidebar />
-        <main
-          role="main"
-          className="w-full sm:w-2/3 md:w-3/4 pt-1 px-2 mx-auto"
-        >
+        <Sidebar props={{ datas: topics }} />
+        <main role="main" className="w-full sm:w-2/3 md:w-3/4 pt-1 px-2 mx-auto">
           {/* <SectionTitle props={{ sectionId: 0 }} /> */}
+          <>
+            <SidebarElement props={{ topicname: "analysisPerTopic" }} />
+          </>
           <SectionTitle props={{ sectionId: 1 }} />
+
           {/* <p className="mx-auto text-center font-bold text-4xl">
             토픽별 감성분석
           </p> */}
           {topics.map((topic, index) => {
             return (
               <div key={index}>
+                <SidebarElement props={{ topicname: topic.topicname }} />
                 <TopicName
                   props={{
                     isPositive: true,
@@ -100,27 +196,23 @@ const OneReport = () => {
                 </p> */}
                 <div>
                   <div className="flex flex-row items-center justify-around my-3">
-                    <SentimentDist
-                      props={{ sentiment_dist: topic.sentiment_dist }}
-                    />
+                    <SentimentDist props={{ sentiment_dist: topic.sentiment_dist }} />
                     <div>
                       <WordCloud props={{ data: topic.wordcloud }} />
                     </div>
                   </div>
 
                   <div className="flex flex-row items-center justify-around my-3">
-                    <KeywordBar
-                      props={{ data: topic.positive_words, isPositive: true }}
-                    />
-                    <KeywordBar
-                      props={{ data: topic.negative_words, isPositive: false }}
-                    />
+                    <KeywordBar props={{ data: topic.positive_words, isPositive: true }} />
+                    <KeywordBar props={{ data: topic.negative_words, isPositive: false }} />
                   </div>
                 </div>
               </div>
             );
           })}
-
+          <>
+            <SidebarElement props={{ topicname: "totalTopicAnalysis" }} />
+          </>
           <SectionTitle props={{ sectionId: 2 }} />
           <div className="mx-auto flex justify-center my-3"></div>
           <div className="mx-auto flex justify-center my-3">
