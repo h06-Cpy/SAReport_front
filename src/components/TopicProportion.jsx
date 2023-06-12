@@ -19,7 +19,7 @@ const TopicProportion = ({ props }) => {
       </h1>
       <LineChart width={800} height={400} data={props.data}>
         <XAxis dataKey={"date"} />
-        <YAxis type="number" domain={[0, 1]} />
+        <YAxis type="number" domain={["dataMin", "dataMax"]} />
         <Legend />
         <Tooltip />
         {numbers.map((i) => {
