@@ -1,20 +1,19 @@
 import { Link } from "react-scroll";
-import React from "react";
 
 const Sidebar = ({ props }) => {
   //서버에서 가져온 토픽 만큼 탭이 추가되야 함
 
   return (
-    <aside className="w-full sm:w-1/3 md:w-1/4 px-2 rounded-xl bg-white mx-auto">
+    <aside className=" px-1 rounded-xl bg-white mx-auto">
       <div className="sticky top-0 p-4 w-full">
         <Link to="total_topic_analysis" smooth={true} duration={500}>
-          <p className="bg-lightgreen hover:bg-lightgreen_hover font-bold mx-auto py-1 rounded-2xl text-white text-xl text-center space-x-4 h-10 my-3">
+          <p className="hover:bg-almostgreen font-bold mx-auto py-1 rounded-2xl text-xl text-center text-gray hover:text-lightgreen_hover space-x-4 h-10 my-2">
             전체 토픽 분석
           </p>
         </Link>
 
         <Link to="analysisPerTopic" smooth={true} duration={500}>
-          <p className="bg-lightgreen hover:bg-lightgreen_hover font-bold mx-auto py-1 rounded-2xl text-white text-xl text-center space-x-4 h-10">
+          <p className="hover:bg-almostgreen font-bold mx-auto py-1 rounded-2xl text-xl text-center text-gray hover:text-lightgreen_hover space-x-4 h-10, my-2">
             토픽별 감성 분석
           </p>
         </Link>
@@ -28,7 +27,7 @@ const Sidebar = ({ props }) => {
                 duration={500}
                 key={index}
               >
-                <li className="bg-lightlightgreen hover:bg-lightgreen_hover mx-auto py-2 rounded-2xl text-base text-white text-center space-x-4 h-10 my-2">
+                <li className="hover:bg-almostgreen w-2/3 flex justify-center mx-auto py-2 rounded-2xl text-gray font-bold hover:text-lightgreen_hover text-base text-center items-center space-x-4 h-8 my-1">
                   {topicData.topic_name}
                 </li>
               </Link>

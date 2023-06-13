@@ -1,4 +1,5 @@
 import {
+  CartesianAxis,
   CartesianGrid,
   Legend,
   Line,
@@ -18,7 +19,6 @@ const CorrLine = ({ props }) => {
         <XAxis dataKey={"date"} />
         <YAxis type="number" domain={["dataMin", "dataMax"]} />
         <Legend />
-        <Tooltip />
 
         <Line
           type={"linear"}
@@ -40,6 +40,7 @@ const CorrLine = ({ props }) => {
           stroke={"crimson"}
           strokeWidth={2}
         />
+        <Tooltip />
       </LineChart>
     </div>
   );

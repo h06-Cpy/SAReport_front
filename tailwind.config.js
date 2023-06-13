@@ -18,6 +18,7 @@ export default {
       white: "#ffffff",
       bgcolor: "#ebedf0",
       txtcolor: "#faff9c",
+      gray: "#c9c9cc",
     },
 
     extend: {},
