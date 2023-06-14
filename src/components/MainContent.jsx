@@ -87,7 +87,7 @@ const MainContent = ({ props }) => {
                 <table className="table-auto">
                   <thead>
                     <th className="border">Index\window</th>
-                    {topic.correlations.refer_days.map((day, index) => {
+                    {topic.correlations.window_sizes.map((day, index) => {
                       return (
                         <th key={index} className="border">
                           {day}

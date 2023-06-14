@@ -1,12 +1,4 @@
-import CorrLine from "../components/CorrLine";
-import KeywordBar from "../components/KeywordBar";
-import SectionTitle from "../components/SectionTitle";
-import SentimentDist from "../components/SentimentDist";
 import Sidebar from "../components/Sidebar";
-import TopicName from "../components/TopicName";
-import TopicProportion from "../components/TopicProportion";
-import WordCloud from "../components/WordCloud";
-import SidebarElement from "../components/SideBarElement";
 import { useEffect, useState } from "react";
 import MainContent from "../components/MainContent";
 
@@ -39,6 +31,7 @@ const OneReport = () => {
       </nav>
       <div className="flex flex-row flex-wrap justify-between">
         <Sidebar props={{ datas: topics }} />
+
         <MainContent props={{ total_topic: total_topic, topics: topics }} />
       </div>
     </>
