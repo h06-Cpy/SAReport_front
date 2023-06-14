@@ -1,8 +1,8 @@
 import {
-  CartesianGrid,
   Legend,
   Line,
   LineChart,
+  ResponsiveContainer,
   Tooltip,
   XAxis,
   YAxis,
@@ -33,26 +33,26 @@ const TopicProportion = ({ props }) => {
 
   return (
     <div className="mx-auto bg-white rounded-md shadow-md">
-      <h1 className="mx-3 text-lg text-center my-1">
-        Topic Proportion over time
-      </h1>
-      <LineChart width={800} height={400} data={props.data}>
-        <XAxis dataKey={"date"} />
-        <YAxis type="number" domain={["dataMin", "dataMax"]} />
-        <Legend />
-        <Tooltip />
-        {numbers.map((i) => {
-          return (
-            <Line
-              type={"linear"}
-              dataKey={`topic${i}`}
-              key={`topic ${i}`}
-              stroke={COLORS[i % COLORS.length]}
-              strokeWidth={2}
-            />
-          );
-        })}
-      </LineChart>
+      <h1 className="mx-3 text-lg text-center my-1 pt-2">날짜별 토픽 분포</h1>
+      <ResponsiveContainer height={400}>
+        <LineChart width={800} height={400} data={props.data}>
+          <XAxis dataKey={"date"} />
+          <YAxis type="number" domain={["dataMin", "dataMax"]} />
+          <Legend />
+          <Tooltip />
+          {numbers.map((i) => {
+            return (
+              <Line
+                type={"linear"}
+                dataKey={`topic${i}`}
+                key={`topic ${i}`}
+                stroke={COLORS[i % COLORS.length]}
+                strokeWidth={2}
+              />
+            );
+          })}
+        </LineChart>
+      </ResponsiveContainer>
     </div>
   );
 };

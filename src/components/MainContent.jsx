@@ -1,8 +1,10 @@
+import BigCharacter from "./BigCharacter";
 import CorrLine from "./CorrLine";
 import KeywordBar from "./KeywordBar";
 import SentimentDist from "./SentimentDist";
 import SidebarElement from "./SideBarElement";
 import TopicProportion from "./TopicProportion";
+import TopicValueTable from "./TopicValueTable";
 import WordCloud from "./WordCloud";
 
 const MainContent = ({ props }) => {
@@ -14,21 +16,34 @@ const MainContent = ({ props }) => {
       className="w-full sm:w-2/3 md:w-3/4 pt-1 px-2 mx-auto bg-bgcolor"
     >
       <SidebarElement props={{ section_name: "total_topic_analysis" }} />
-      <p className="mx-3 my-3 py-2 flex items-center  font-bold text-3xl border-b-2">
+      <p className="mx-3 my-3 py-2 flex items-center  font-bold text-4xl border-b-2">
         1. 전체 토픽 분석
       </p>
-      {/* <SectionTitle props={{ sectionId: 0 }} /> */}
 
       <div className="grid grid-cols-4 grid-rows-[1fr-1fr-0.5fr] gap-4">
+        <BigCharacter
+          props={{ title: "총 트윗 수", content: total_topic.tweet_number }}
+        />
         <SentimentDist props={{ sentiment_dist: total_topic.sentiment_dist }} />
-        <SentimentDist props={{ sentiment_dist: total_topic.sentiment_dist }} />
-        <SentimentDist props={{ sentiment_dist: total_topic.sentiment_dist }} />
-        <SentimentDist props={{ sentiment_dist: total_topic.sentiment_dist }} />
-        <div className="col-span-3">
+        <TopicValueTable
+          props={{
+            title: "감성 분포 순위",
+            description: "긍정-부정 기준",
+            headers: ["순위", "토픽", "감성 분포"],
+            datas: total_topic.sentiment_dist_rank,
+          }}
+        />
+        <TopicValueTable
+          props={{
+            title: "상관관계 순위",
+            description: "snp500, nasdaq100와 상관관계 비교",
+            headers: ["순위", "토픽", "상관관계"],
+            datas: total_topic.corr_rank_list,
+          }}
+        />
+        <div className="col-span-4">
           <TopicProportion props={{ data: total_topic.topic_proportions }} />
         </div>
-
-        <SentimentDist props={{ sentiment_dist: total_topic.sentiment_dist }} />
 
         <div className="w-full col-span-4 mx-auto w-2/3 bg-white rounded-md shadow-md flex justify-center flex-col">
           <h1 className="text-center font-bold text-lg my-3">
@@ -49,91 +64,87 @@ const MainContent = ({ props }) => {
       </div>
 
       <SidebarElement props={{ section_name: "analysisPerTopic" }} />
-      {/* <SectionTitle props={{ sectionId: 1 }} /> */}
-      <p className="mx-3 my-3 py-2 flex items-center  font-bold text-3xl border-b-2">
+      <p className="mx-3 my-3 py-2 flex items-center  font-bold text-4xl border-b-2">
         2. 토픽별 감성 분석
       </p>
       {topics.map((topic, index) => {
         return (
           <div className=" my-3" key={index}>
             <SidebarElement props={{ section_name: topic.topic_name }} />
-            {/* <TopicName
-                props={{
-                  isPositive: true,
-                  topic_name: topic.topic_name,
-                  score: topic.score,
-                }}
-              /> */}
-            <p className="mx-3 my-3 py-2 flex items-center font-bold text-2xl">
+
+            <p className="mx-3 my-3 py-2 flex items-center font-bold text-3xl">
               2.{index + 1} {topic.topic_name}
             </p>
-            <div className="grid grid-cols-4 grid-rows-[1fr-1fr-0.3fr-1fr] gap-4">
-              <SentimentDist props={{ sentiment_dist: topic.sentiment_dist }} />
+            <div className="grid grid-cols-4 grid-rows-[1fr-1fr-1fr-1fr] gap-4">
+              <BigCharacter
+                props={{ title: "트윗 수", content: topic.tweet_number }}
+              />
               <SentimentDist props={{ sentiment_dist: topic.sentiment_dist }} />
               {/* wordcloud는 div에다 안 넣으면 무한정 길어짐 */}
-              <div>
+              <div className="row-span-1">
                 <WordCloud props={{ data: topic.topic_words }} />
               </div>
-              <SentimentDist props={{ sentiment_dist: topic.sentiment_dist }} />
+              <TopicValueTable
+                props={{
+                  title: "연관 단어 순위",
+                  description: "LDA 계산, 상위 10개",
+                  headers: ["순위", "단어", "값"],
+                  datas: topic.topic_words.slice(0, 10),
+                }}
+              />
+
+              <BigCharacter
+                props={{
+                  title: "감성 점수 가장 높은 날",
+                  content: topic.most_positive_day.slice(5),
+                }}
+              />
+              <BigCharacter
+                props={{
+                  title: "감성 점수 가장 낮은 날",
+                  content: topic.most_negative_day.slice(5),
+                }}
+              />
+              <BigCharacter
+                props={{
+                  title: "토픽 분포 가장 높은 날",
+                  content: topic.max_proportion_day.slice(5),
+                }}
+              />
+              <BigCharacter
+                props={{
+                  title: "토픽 분포 가장 낮은 날",
+                  content: topic.min_proportion_day.slice(5),
+                }}
+              />
+
               <div className="col-span-4 w-full">
                 <CorrLine props={{ data: topic.sentiment_corr }} />
               </div>
 
-              {/* <div className=" mx-auto flex justify-center my-3">
-                <CorrLine props={{ data: topic.sentiment_corr }} />
-              </div> */}
-              <div className="col-span-4 mx-auto flex justify-center my-3">
+              <div className="col-span-4 mx-auto flex justify-center my-3 h-full bg-white shadow rounded-lg">
                 <table className="table-auto">
                   <thead>
-                    <th className="border">Index\window</th>
-                    {topic.correlations.refer_days.map((day, index) => {
-                      return (
-                        <th key={index} className="border">
-                          {day}
-                        </th>
-                      );
+                    <th>Index|window</th>
+                    {topic.correlations.window_sizes.map((day, index) => {
+                      return <th key={index}>{day}</th>;
                     })}
                   </thead>
                   <tbody>
                     <tr>
-                      <td className="border">S&P500</td>
+                      <td>S&P500</td>
                       {topic.correlations.snp500.map((corr, index) => {
-                        return (
-                          <td key={index} className="border">
-                            {corr}
-                          </td>
-                        );
+                        return <td key={index}>{corr}</td>;
                       })}
                     </tr>
                     <tr>
-                      <td className="border">NASDAQ100</td>
+                      <td>NASDAQ100</td>
                       {topic.correlations.nasdaq100.map((corr, index) => {
-                        return (
-                          <td key={index} className="border">
-                            {corr}
-                          </td>
-                        );
+                        return <td key={index}>{corr}</td>;
                       })}
                     </tr>
                   </tbody>
                 </table>
-              </div>
-              <div className="grid grid-cols-3 grid-rows-1 col-span-4 gap-1">
-                <div className="mx-auto">
-                  <SentimentDist
-                    props={{ sentiment_dist: topic.sentiment_dist }}
-                  />
-                </div>
-                <div className="mx-auto">
-                  <SentimentDist
-                    props={{ sentiment_dist: topic.sentiment_dist }}
-                  />
-                </div>
-                <div className="mx-auto">
-                  <SentimentDist
-                    props={{ sentiment_dist: topic.sentiment_dist }}
-                  />
-                </div>
               </div>
             </div>
           </div>

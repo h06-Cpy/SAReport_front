@@ -5,7 +5,7 @@ const options = {
   enableTooltip: false,
   deterministic: false,
   fontFamily: "impact",
-  fontSizes: [5, 60],
+  fontSizes: [25, 60],
   fontStyle: "normal",
   fontWeight: "normal",
   padding: 1,
@@ -18,8 +18,8 @@ const options = {
 
 const SimpleWordcloud = ({ props }) => {
   return (
-    <div className="bg-white rounded-md shadow-md py-1">
-      <h1 className="mx-3 text-lg text-center">WordCloud</h1>
+    <div className="bg-white rounded-md shadow-md flex flex-col justify-center py-1 h-full">
+      <h1 className="mx-3 text-lg text-center mb-16">워드클라우드</h1>
       <ReactWordcloud words={props.data} options={options} />
     </div>
   );

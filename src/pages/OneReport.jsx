@@ -24,8 +24,8 @@ const OneReport = () => {
 
   return (
     <>
-      <nav className="flex items-center h-10 bg-lightlightgreen top-0">
-        <h1 className="mx-5 text-center text-xl text-white">
+      <nav className="flex items-center h-12 bg-lightlightgreen top-0">
+        <h1 className="mx-5 text-center text-xl text-white font-bold">
           Sentiment Analysis Report of IT Companies
         </h1>
       </nav>
