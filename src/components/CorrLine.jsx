@@ -15,7 +15,7 @@ const CorrLine = ({ props }) => {
       <h1 className="mx-3 text-lg text-center my-1">
         Correlation between Sentiment Score and Index
       </h1>
-      <LineChart width={800} height={400} data={props.data}>
+      <LineChart width={1100} height={400} data={props.data}>
         <XAxis dataKey={"date"} />
         <YAxis type="number" domain={["dataMin", "dataMax"]} />
         <Legend />
