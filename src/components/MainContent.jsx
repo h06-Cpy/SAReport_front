@@ -1,6 +1,5 @@
 import BigCharacter from "./BigCharacter";
 import CorrLine from "./CorrLine";
-import KeywordBar from "./KeywordBar";
 import SentimentDist from "./SentimentDist";
 import SidebarElement from "./SideBarElement";
 import TopicProportion from "./TopicProportion";
@@ -69,7 +68,7 @@ const MainContent = ({ props }) => {
       </p>
       {topics.map((topic, index) => {
         return (
-          <div className=" my-3" key={index}>
+          <div className="my-5 border-b-2 border-b-gray" key={index}>
             <SidebarElement props={{ section_name: topic.topic_name }} />
 
             <p className="mx-3 my-3 py-2 flex items-center font-bold text-3xl">
@@ -122,8 +121,11 @@ const MainContent = ({ props }) => {
                 <CorrLine props={{ data: topic.sentiment_corr }} />
               </div>
 
-              <div className="col-span-4 mx-auto flex justify-center my-3 h-full bg-white shadow rounded-lg">
-                <table className="table-auto">
+              <div className="col-span-4 mx-auto flex flex-col justify-center items-center mt-1 mb-10 bg-white shadow-md rounded-lg px-3 pb-3">
+                <h1 className="texxt-center text-lg mb-1">
+                  window 크기별 상관관계
+                </h1>
+                <table className="table-auto text-xl">
                   <thead>
                     <th>Index|window</th>
                     {topic.correlations.window_sizes.map((day, index) => {
