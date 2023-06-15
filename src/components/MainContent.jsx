@@ -28,15 +28,15 @@ const MainContent = ({ props }) => {
           props={{
             title: "감성 분포 순위",
             description: "긍정-부정 기준",
-            headers: ["순위", "토픽", "감성 분포"],
+            headers: ["토픽", "감성 분포"],
             datas: total_topic.sentiment_dist_rank,
           }}
         />
         <TopicValueTable
           props={{
             title: "상관관계 순위",
-            description: "snp500, nasdaq100와 상관관계 비교",
-            headers: ["순위", "토픽", "상관관계"],
+            description: "snp500, nasdaq100과 상관관계",
+            headers: ["토픽", "상관관계"],
             datas: total_topic.corr_rank_list,
           }}
         />
@@ -87,7 +87,7 @@ const MainContent = ({ props }) => {
                 props={{
                   title: "연관 단어 순위",
                   description: "LDA 계산, 상위 10개",
-                  headers: ["순위", "단어", "값"],
+                  headers: ["단어", "값"],
                   datas: topic.topic_words.slice(0, 10),
                 }}
               />
@@ -125,24 +125,36 @@ const MainContent = ({ props }) => {
                 <h1 className="texxt-center text-lg mb-1">
                   window 크기별 상관관계
                 </h1>
-                <table className="table-auto text-xl">
-                  <thead>
-                    <th>Index|window</th>
+                <table className="table-auto mx-auto my-3 border-spacing-y-2 text-xl">
+                  <thead className="border-y-2 border-y-black">
+                    <th className="px-6 py-4">Index|window</th>
                     {topic.correlations.window_sizes.map((day, index) => {
-                      return <th key={index}>{day}</th>;
+                      return (
+                        <th key={index} className="px-6 py-4">
+                          {day}
+                        </th>
+                      );
                     })}
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>S&P500</td>
+                    <tr className="hover:bg-almostgreen hover:text-lightgreen_hover hover:font-bold text-tabletext">
+                      <td className="px-6 py-4">S&P500</td>
                       {topic.correlations.snp500.map((corr, index) => {
-                        return <td key={index}>{corr}</td>;
+                        return (
+                          <td key={index} className="px-6 py-4">
+                            {corr}
+                          </td>
+                        );
                       })}
                     </tr>
-                    <tr>
-                      <td>NASDAQ100</td>
+                    <tr className="hover:bg-almostgreen hover:text-lightgreen_hover hover:font-bold text-tabletext">
+                      <td className="px-6 py-4">NASDAQ100</td>
                       {topic.correlations.nasdaq100.map((corr, index) => {
-                        return <td key={index}>{corr}</td>;
+                        return (
+                          <td key={index} className="px-6 py-4">
+                            {corr}
+                          </td>
+                        );
                       })}
                     </tr>
                   </tbody>
