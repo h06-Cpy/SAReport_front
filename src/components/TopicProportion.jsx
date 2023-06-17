@@ -10,27 +10,27 @@ import {
 
 const TopicProportion = ({ props }) => {
   const numbers = [...Array(10).keys()]; // 토픽 개수 지정 필요
-  const COLORS = [
-    // "#FED78A",
-    "#C3E855",
-    "#C9839D",
-    "#6AC7F5",
-    // "#E2AA32",
-    // "#FB962D",
-    // "#dc143c",
-    // "#000000",
-    // "#d024db",
-    // "#FFE66D",
-    // "#d81f27",
-    // "#134a90",
-    // "#f15d51",
-    // "#0092c3",
-    // "#f7a396",
-    // "#89cadd",
-    // "#fee2db",
-    // "#dde9ed",
-  ];
+  const COLORS = ["#C3E855", "#C9839D", "#6AC7F5"];
 
+  const customToolTip = ({ active, payload, label }) => {
+    let sorted_payload;
+    if (active && payload && payload.length) {
+      sorted_payload = payload.sort((a, b) => b.value - a.value);
+
+      return (
+        <div className="custom-tooltip bg-white rounded-lg shadow-md py-2 px-2">
+          {sorted_payload.map((topic, index) => {
+            return (
+              <p
+                key={index}
+                style={{ color: topic.stroke }}
+              >{`${topic.dataKey}: ${topic.value}`}</p>
+            );
+          })}
+        </div>
+      );
+    }
+  };
   return (
     <div className="mx-auto bg-white rounded-md shadow-md">
       <h1 className="mx-3 text-lg text-center my-1 pt-2">날짜별 토픽 분포</h1>
@@ -39,7 +39,7 @@ const TopicProportion = ({ props }) => {
           <XAxis dataKey={"date"} />
           <YAxis type="number" domain={["dataMin", "dataMax"]} />
           <Legend />
-          <Tooltip />
+          <Tooltip content={customToolTip} />
           {numbers.map((i) => {
             return (
               <Line

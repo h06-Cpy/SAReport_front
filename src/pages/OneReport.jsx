@@ -7,12 +7,11 @@ const OneReport = () => {
   const [topics, setTopics] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:8000")
+    fetch("http://localhost:8000/api")
       .then((res) => {
         return res.json();
       })
       .then((data) => {
-        console.log(data);
         set_total_topic(data.total_topic);
         setTopics(data.topics);
       });
@@ -25,8 +24,8 @@ const OneReport = () => {
   return (
     <>
       <nav className="flex items-center h-12 bg-lightlightgreen top-0">
-        <h1 className="mx-5 text-center text-xl text-white font-bold">
-          Sentiment Analysis Report of IT Companies
+        <h1 className="mx-5 text-center text-2xl text-white font-bold">
+          Senty
         </h1>
       </nav>
       <div className="flex flex-row flex-wrap justify-between">
