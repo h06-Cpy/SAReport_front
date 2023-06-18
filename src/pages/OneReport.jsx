@@ -13,7 +13,7 @@ const OneReport = () => {
       })
       .then((data) => {
         set_total_topic(data.total_topic);
-        setTopics(data.topics);
+        setTopics(data.topics.slice(1));
       });
   }, []);
 

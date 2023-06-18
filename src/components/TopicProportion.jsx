@@ -10,6 +10,18 @@ import {
 
 const TopicProportion = ({ props }) => {
   const numbers = [...Array(10).keys()]; // 토픽 개수 지정 필요
+  const topic_names = [
+    "기타",
+    "Apple",
+    "메타버스",
+    "GPU",
+    "개인비서",
+    "스마트폰",
+    "컨텐츠 플랫폼",
+    "AI",
+    "Apps",
+    "주식",
+  ];
   const COLORS = ["#C3E855", "#C9839D", "#6AC7F5"];
 
   const customToolTip = ({ active, payload, label }) => {
@@ -20,17 +32,20 @@ const TopicProportion = ({ props }) => {
       return (
         <div className="custom-tooltip bg-white rounded-lg shadow-md py-2 px-2">
           {sorted_payload.map((topic, index) => {
+            console.log(parseInt(topic.dataKey[5]));
+            console.log(typeof parseInt(topic.dataKey[5]));
+
             return (
-              <p
-                key={index}
-                style={{ color: topic.stroke }}
-              >{`${topic.dataKey}: ${topic.value}`}</p>
+              <p key={index} style={{ color: topic.stroke }}>{`${
+                topic_names[parseInt(topic.dataKey[5])]
+              }: ${topic.value}`}</p>
             );
           })}
         </div>
       );
     }
   };
+
   return (
     <div className="mx-auto bg-white rounded-md shadow-md">
       <h1 className="mx-3 text-lg text-center my-1 pt-2">날짜별 토픽 분포</h1>
@@ -41,6 +56,17 @@ const TopicProportion = ({ props }) => {
           <Legend />
           <Tooltip content={customToolTip} />
           {numbers.map((i) => {
+            if (i === 0) {
+              return (
+                <Line
+                  type={"linear"}
+                  dataKey={`topic${i}`}
+                  key={`topic ${i}`}
+                  stroke={"#AAAAAA"}
+                  strokeWidth={2}
+                />
+              );
+            }
             return (
               <Line
                 type={"linear"}

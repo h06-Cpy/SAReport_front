@@ -19,7 +19,7 @@ const MainContent = ({ props }) => {
         1. 서론
       </p>
       <div className="w-full col-span-4 mx-auto bg-white rounded-md shadow-md flex justify-center flex-col">
-        <p className="text-justify break-all px-10 py-8 text-lg tracking-wide">
+        {/* <p className="text-justify break-all px-10 py-8 text-lg tracking-wide">
           본 보고서에서는 트위터에서 google, apple, amazon, microsoft, nvidia 등
           유명 IT 기업에 관한 트윗을 수집하여 감성 분석을 진행하였다. 본
           보고서의 목적은 유명 IT 기업에 대한 비재무적 분석을 돕고 IT 산업
@@ -39,17 +39,7 @@ const MainContent = ({ props }) => {
           보여준다. 언제 감성 점수 높고 낮은지, 언제 토픽 분포가 높고 낮은지의
           정보도 제공한다.
           <br />
-          {/*  중 긍정 트윗은 <b>{total_topic.sentiment_dist[0].value}%</b>,
-          부정 트윗은 <b>{total_topic.sentiment_dist[1].value}%</b>, 중립 트윗은{" "}
-          <b>{total_topic.sentiment_dist[2].value}%</b>로 나타났다. 감성분포에서
-          긍정과 부정의 차이를 계산했을 때 가장 높은 토픽은{" "}
-          <b>{total_topic.sentiment_dist_rank[0].topic_name}</b>이고, 주가지수와
-          가장 상관관계가 높은 토픽은{" "}
-          <b>{total_topic.corr_rank_list[0].topic_name}</b>으로 나타났다.
-          <b>일자별 토픽 분포</b>를 살펴보면 5.23에는 <b></b> 긍정 트윗 비율이
-          가장 높은 토픽은 ~~ 부정 트윗 비율이 가장 높은 토픽은 ~~ snp500,
-          nasdaq100과 가장 상관관계가 높은 토픽은 ~~, 낮은 토픽은 ~~ */}
-        </p>
+        </p> */}
       </div>
       <SidebarElement props={{ section_name: "total_topic_analysis" }} />
       <p className="mx-3 my-3 py-2 flex items-center font-bold text-4xl border-b-2">
