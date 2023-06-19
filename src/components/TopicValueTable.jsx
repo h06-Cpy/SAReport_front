@@ -6,7 +6,7 @@ const TopicValueTable = ({ props }) => {
       <h1 className="mx-3 text-md text-center text-gray my-1">
         {props.description}
       </h1>
-      <table className="table-auto mx-auto my-3 border-spacing-y-2 text-md ">
+      <table className="table-auto mx-auto my-3 border-spacing-y-2 text-md">
         <thead className="border-y-2 border-y-black">
           {props.headers.map((header, index) => {
             return (
@@ -23,10 +23,10 @@ const TopicValueTable = ({ props }) => {
                 key={index}
                 className="hover:bg-almostgreen hover:text-lightgreen_hover hover:font-bold text-tabletext"
               >
-                <td className="px-6 py-1">
+                <td className="px-4 py-1">
                   {data.topic_name ? data.topic_name : data.text}
                 </td>
-                <td className="text-center px-6 py-1">{data.value}</td>
+                <td className="text-center px-4 py-1">{data.value}</td>
               </tr>
             );
           })}

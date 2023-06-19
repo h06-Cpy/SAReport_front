@@ -28,17 +28,17 @@ const TopicProportion = ({ props }) => {
     let sorted_payload;
     if (active && payload && payload.length) {
       sorted_payload = payload.sort((a, b) => b.value - a.value);
-
+      console.log(payload);
       return (
         <div className="custom-tooltip bg-white rounded-lg shadow-md py-2 px-2">
+          <p>{payload[0].payload.date}</p>
           {sorted_payload.map((topic, index) => {
-            console.log(parseInt(topic.dataKey[5]));
-            console.log(typeof parseInt(topic.dataKey[5]));
-
             return (
-              <p key={index} style={{ color: topic.stroke }}>{`${
-                topic_names[parseInt(topic.dataKey[5])]
-              }: ${topic.value}`}</p>
+              <div key={index}>
+                <p style={{ color: topic.stroke }}>{`${
+                  topic_names[parseInt(topic.dataKey[5])]
+                }: ${topic.value}`}</p>
+              </div>
             );
           })}
         </div>
